@@ -39,7 +39,6 @@ func validateReceipt(receipt Receipt) bool {
 	}
 
 	for _, item := range receipt.Items {
-		fmt.Println(item.Price)
 		if item.ShortDescription == "" || item.Price == "" {
 			return false
 		}

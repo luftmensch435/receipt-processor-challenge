@@ -44,11 +44,17 @@ The server will listen on http://localhost:8080.
    go run .
    ```
 
-2. Run the test script:  
+2. Option 1: Run the python test script directly:  
    ```bash
    cd receipt-process-test
    pip install requests
    python3 test_server.py
    ```
 
-   **Note**: Due to limited computer resources, I am unable to run Docker on my system. As a result, a Dockerfile is not provided for testing. However, since Docker is not a requirement for this project, the testing can be performed directly using the provided Python script.
+2. Option 2: Dockerized testing:
+   ```bash
+   docker build -t receipt-process-test .
+   docker run --rm --network="host" receipt-process-test
+   ```
+
+   **Note**: Due to limited computer resources, I am unable to run Docker on my system. As a result, the Dockerfile provided for testing is not guaranteed to run. However, since testing is not a requirement for this project, the tests can be performed directly using the provided Python script.

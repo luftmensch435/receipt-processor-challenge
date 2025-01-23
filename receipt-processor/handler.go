@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"math"
 	"net/http"
 	"strconv"
@@ -29,11 +30,22 @@ type Item struct {
 
 // validate receipt values, return True for valid
 func validateReceipt(receipt Receipt) bool {
-	return receipt.Retailer != "" &&
-		receipt.PurchaseDate != "" &&
-		receipt.PurchaseTime != "" &&
-		receipt.Total != "" &&
-		len(receipt.Items) > 0
+	if receipt.Retailer == "" ||
+		receipt.PurchaseDate == "" ||
+		receipt.PurchaseTime == "" ||
+		receipt.Total == "" ||
+		len(receipt.Items) == 0 {
+		return false
+	}
+
+	for _, item := range receipt.Items {
+		fmt.Println(item.Price)
+		if item.ShortDescription == "" || item.Price == "" {
+			return false
+		}
+	}
+
+	return true
 }
 
 // handle receipt submission

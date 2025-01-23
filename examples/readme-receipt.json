@@ -1,0 +1,13 @@
+{
+  "Retailer": "M&M Corner Market",
+  "PurchaseDate": "2022-01-01",
+  "PurchaseTime": "13:01",
+  "Items": [
+      {
+          "ShortDescription": "Mountain Dew 12PK",
+          "Price": "6.49"
+      }
+  ],
+  "Total": "6.49"
+
+}

@@ -70,6 +70,9 @@ if __name__ == "__main__":
         ("Bad UUID", "./test-receipts/readme-receipt-1.json", (200, "", -1)),
         ("Readme case #1", "./test-receipts/readme-receipt-1.json", (200, None, 28)),
         ("Readme case #2", "./test-receipts/readme-receipt-2.json", (200, None, 109)),
+        ("Five Items", "./test-receipts/5-items.json", (200, None, 109)),
+        ("3 Description", "./test-receipts/description-bonus.json", (200, None, 110)),
+        ("Odd Date", "./test-receipts/odd-date.json", (200, None, 115)),
     ]
 
     for i, case in enumerate(test_cases, 1):

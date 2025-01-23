@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"math"
 	"net/http"
 	"strconv"
@@ -114,14 +113,14 @@ func calculatePoints(receipt Receipt) string {
 
 	// 6 points if the day in the purchase date is odd.
 	// NOTE: Assumes `purchaseDate` is a valid value that can be parsed into this time layout "2022-01-01".
-	purchaseDate, _ := time.Parse("2022-01-01", receipt.PurchaseDate)
+	purchaseDate, _ := time.Parse("2006-01-02", receipt.PurchaseDate)
 	if purchaseDate.Day()%2 != 0 {
 		points += 6
 	}
 
 	// 10 points if the time of purchase is after 2:00pm and before 4:00pm.
 	// NOTE: Assumes `purchaseTime` is a valid value that can be parsed into this time layout "13:01".
-	purchaseTime, _ := time.Parse("13:01", receipt.PurchaseTime)
+	purchaseTime, _ := time.Parse("15:04", receipt.PurchaseTime)
 	if purchaseTime.Hour() == 14 || purchaseTime.Hour() == 15 {
 		points += 10
 	}

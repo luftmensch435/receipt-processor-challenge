@@ -50,7 +50,7 @@ func HandleProcessReceipts(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&receipt)
 	if err != nil || !validateReceipt(receipt) {
-		http.Error(w, "Invalid input", http.StatusBadRequest)
+		http.Error(w, "The receipt is invalid.", http.StatusBadRequest)
 		return
 	}
 
@@ -133,7 +133,7 @@ func HandleGetPoints(w http.ResponseWriter, r *http.Request) {
 	// fetch receipt from memory
 	receipt, exists := GetReceipt(id)
 	if !exists {
-		http.Error(w, "ID not exist", http.StatusNotFound)
+		http.Error(w, "No receipt found for that ID.", http.StatusNotFound)
 		return
 	}
 

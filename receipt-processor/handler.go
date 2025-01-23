@@ -52,7 +52,7 @@ func HandleProcessReceipts(w http.ResponseWriter, r *http.Request) {
 
 	// generate ID, save
 	id := uuid.New().String()
-	// SaveReceipt(id, receipt)
+	SaveReceipt(id, receipt)
 
 	// return ID
 	responseData := map[string]string{"id": id}
@@ -61,10 +61,10 @@ func HandleProcessReceipts(w http.ResponseWriter, r *http.Request) {
 }
 
 // calculate points according to rules
-func calculatePoints(receipt Receipt) int {
-	points := 0
+func calculatePoints(receipt Receipt) string {
+	// points := 0
 	// TODO: calculation
-	return points
+	return "I love money"
 }
 
 // retrieve points for a receipt
@@ -79,19 +79,18 @@ func HandleGetPoints(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	id := parts[1]
 
-	// TODO
-	// // fetch receipt from memory
-	// receipt, exists := GetReceipt(id)
-	// if !exists {
-	// 	http.Error(w, "ID not exist", http.StatusNotFound)
-	// 	return
-	// }
+	// fetch receipt from memory
+	receipt, exists := GetReceipt(id)
+	if !exists {
+		http.Error(w, "ID not exist", http.StatusNotFound)
+		return
+	}
 
-	// // Calculate points
-	// points := calculatePoints(receipt)
+	// Calculate points
+	points := calculatePoints(receipt)
 
-	// // Return points
-	// responseData := map[string]string{"points": points}
-	// encoder := json.NewEncoder(w)
-	// encoder.Encode(responseData)
+	// Return points
+	responseData := map[string]string{"points": points}
+	encoder := json.NewEncoder(w)
+	encoder.Encode(responseData)
 }

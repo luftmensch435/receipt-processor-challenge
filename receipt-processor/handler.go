@@ -75,7 +75,7 @@ func HandleProcessReceipts(w http.ResponseWriter, r *http.Request) {
 }
 
 // calculate points according to rules
-func calculatePoints(receipt Receipt) string {
+func calculatePoints(receipt Receipt) int {
 	points := 0
 
 	// One point for every alphanumeric character in the retailer name.
@@ -125,7 +125,7 @@ func calculatePoints(receipt Receipt) string {
 		points += 10
 	}
 
-	return strconv.Itoa(points)
+	return points
 }
 
 // retrieve points for a receipt
@@ -151,7 +151,7 @@ func HandleGetPoints(w http.ResponseWriter, r *http.Request) {
 	points := calculatePoints(receipt)
 
 	// Return points
-	responseData := map[string]string{"points": points}
+	responseData := map[string]int{"points": points}
 	encoder := json.NewEncoder(w)
 	encoder.Encode(responseData)
 }

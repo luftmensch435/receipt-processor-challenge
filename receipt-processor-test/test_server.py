@@ -66,10 +66,10 @@ if __name__ == "__main__":
     ## expected_results = (exp_submit_status, invalid_id, exp_points)
     ## test_case = (name, filename, expected_results)
     test_cases = [
-        ("Bad Input", "./test-receipts/bad-input.json", (400, None, '-1')),
-        ("Bad UUID", "./test-receipts/readme-receipt-1.json", (200, "", '-1')),
-        ("Readme case #1", "./test-receipts/readme-receipt-1.json", (200, None, '28')),
-        ("Readme case #2", "./test-receipts/readme-receipt-2.json", (200, None, '109')),
+        ("Bad Input", "./test-receipts/bad-input.json", (400, None, -1)),
+        ("Bad UUID", "./test-receipts/readme-receipt-1.json", (200, "", -1)),
+        ("Readme case #1", "./test-receipts/readme-receipt-1.json", (200, None, 28)),
+        ("Readme case #2", "./test-receipts/readme-receipt-2.json", (200, None, 109)),
     ]
 
     for i, case in enumerate(test_cases, 1):

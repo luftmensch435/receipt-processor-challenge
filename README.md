@@ -57,4 +57,4 @@ The server will listen on http://localhost:8080.
    docker run --rm --network="host" receipt-process-test
    ```
 
-   **Note**: Due to limited computer resources, I am unable to run Docker on my system. As a result, the Dockerfile provided for testing is not guaranteed to run. However, since testing is not a requirement for this project, the tests can be performed directly using the provided Python script.
+   **Note**: Due to limited computer resources, I am unable to run Docker on my system. While a Dockerfile is provided as a backup option for testing, it has not been tested and is not guaranteed to run successfully. Since testing is not a required part of this project, the tests can also be performed directly using the Python script provided.

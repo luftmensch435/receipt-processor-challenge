@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/google/uuid"
 )
@@ -57,4 +58,40 @@ func HandleProcessReceipts(w http.ResponseWriter, r *http.Request) {
 	responseData := map[string]string{"id": id}
 	encoder := json.NewEncoder(w)
 	encoder.Encode(responseData)
+}
+
+// calculate points according to rules
+func calculatePoints(receipt Receipt) int {
+	points := 0
+	// TODO: calculation
+	return points
+}
+
+// retrieve points for a receipt
+func HandleGetPoints(w http.ResponseWriter, r *http.Request) {
+	// verify http method
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// extract ID from path '/receipts/{id}/points'
+	parts := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
+	id := parts[1]
+
+	// TODO
+	// // fetch receipt from memory
+	// receipt, exists := GetReceipt(id)
+	// if !exists {
+	// 	http.Error(w, "ID not exist", http.StatusNotFound)
+	// 	return
+	// }
+
+	// // Calculate points
+	// points := calculatePoints(receipt)
+
+	// // Return points
+	// responseData := map[string]string{"points": points}
+	// encoder := json.NewEncoder(w)
+	// encoder.Encode(responseData)
 }

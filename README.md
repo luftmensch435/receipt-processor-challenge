@@ -14,15 +14,14 @@
 ## Project Structure
 ```plaintext
 .
-├── receipt-processor       # Contains Go server source code
+├── receipt-processor       # PROJECT SUBMISSION!!
 │   ├── main.go             # Entry point for the Go server
 │   ├── handler.go          # Handlers for API endpoints
-│   ├── memory.go           # In-memory data storage implementation
-│   └── Dockerfile          # Dockerfile for the Go server
+│   └── storage.go          # In-memory data storage implementation
 ├── receipt-processor-test  # Contains Python test framework
-│   ├── test_server.py      # Python script for testing API endpoints
-│   ├── test-receipts       # Directory containing test receipt JSON files
-│   └── Dockerfile          # Dockerfile for running tests
+│   ├── test_server.py      # Python script for testing 
+│   └── test-receipts       # Test receipt JSON files
+├── Instruction.md          # Old README.md
 └── README.md               # Documentation
 ```
 
